@@ -24,8 +24,8 @@ public class Main {
 
     public Operation testJoin() throws Exception {
 
-        Table table1 = createTable(".", "t1", Table.DEFULT_PAGE_SIZE, 10, false, 3);
-        Table table2 = createTable(".", "t2", Table.DEFULT_PAGE_SIZE, 40, false, 3);
+        Table table1 = createTable(".", "t1", Table.DEFULT_PAGE_SIZE, 600, false, 1);
+        Table table2 = createTable(".", "t2", Table.DEFULT_PAGE_SIZE, 100, false, 1);
         Table table3 = createTable(".", "t3", Table.DEFULT_PAGE_SIZE, 50, false, 1);
         Table table4 = createTable(".", "t4", Table.DEFULT_PAGE_SIZE, 50, false, 1);
 

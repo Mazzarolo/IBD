@@ -2,8 +2,6 @@ package ibd.query.binaryop;
 
 import ibd.query.Operation;
 import ibd.query.Tuple;
-import ibd.query.binaryop.BinaryOperation;
-import java.util.Objects;
 
 public class JoaoMazzaroloDifference extends BinaryOperation {
 
@@ -50,51 +48,45 @@ public class JoaoMazzaroloDifference extends BinaryOperation {
 
     private Tuple verifyLastLeftTuple() throws Exception
     {
-        return null;
+        Tuple temp = lTuple;
+        if(op1.hasNext())
+            lTuple = op1.next();
+        else
+            lTuple = null;
+        return temp;
     }
 
     private Tuple diff() throws Exception
     {
-        if (lTuple == null) {
+        if (lTuple == null)
             return null;
-        }
 
-        if (rTuple == null) {
-            Tuple temp = lTuple;
-            if(op1.hasNext())
-                lTuple = op1.next();
-            else
-                lTuple = null;
-            return temp;
-        }
+        if (rTuple == null)
+            return verifyLastLeftTuple();
 
-        while (lTuple != null && rTuple != null) {
+        while (lTuple != null && rTuple != null) 
+        {
             int compare = Long.compare(lTuple.sourceTuples[tupleIndex1].record.getPrimaryKey(), rTuple.sourceTuples[tupleIndex2].record.getPrimaryKey());
 
             // System.out.println(lTuple.sourceTuples[tupleIndex1].record.getPrimaryKey());
             // System.out.println(rTuple.sourceTuples[tupleIndex1].record.getPrimaryKey());
 
-            if (compare < 0) {
-                Tuple temp = lTuple;
-                if(op1.hasNext())
-                    lTuple = op1.next();
-                else
-                    lTuple = null;
-                return temp;
-            } else if (compare > 0) {
+            if (compare < 0) 
+            {
+                return verifyLastLeftTuple();
+            } 
+            else if (compare > 0) 
+            {
                 if(op2.hasNext())
                     rTuple = op2.next();
                 else
                 {
                     rTuple = null;
-                    Tuple temp = lTuple;
-                    if(op1.hasNext())
-                        lTuple = op1.next();
-                    else
-                        lTuple = null;
-                    return temp;
+                    return verifyLastLeftTuple();
                 }
-            } else {
+            } 
+            else 
+            {
                 if(op1.hasNext())
                     lTuple = op1.next();
                 else
@@ -106,12 +98,7 @@ public class JoaoMazzaroloDifference extends BinaryOperation {
                 else
                 {
                     rTuple = null;
-                    Tuple temp = lTuple;
-                    if(op1.hasNext())
-                        lTuple = op1.next();
-                    else
-                        lTuple = null;
-                    return temp;
+                    return verifyLastLeftTuple();
                 }
             }
         }
