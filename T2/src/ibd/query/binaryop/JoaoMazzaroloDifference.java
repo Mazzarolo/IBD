@@ -46,6 +46,7 @@ public class JoaoMazzaroloDifference extends BinaryOperation {
         return (nextTuple != null);
     }
 
+    //Função que verifica se é o ultimo elemento da esquerda
     private Tuple verifyLastLeftTuple() throws Exception
     {
         Tuple temp = lTuple;
@@ -67,9 +68,6 @@ public class JoaoMazzaroloDifference extends BinaryOperation {
         while (lTuple != null && rTuple != null) 
         {
             int compare = Long.compare(lTuple.sourceTuples[tupleIndex1].record.getPrimaryKey(), rTuple.sourceTuples[tupleIndex2].record.getPrimaryKey());
-
-            // System.out.println(lTuple.sourceTuples[tupleIndex1].record.getPrimaryKey());
-            // System.out.println(rTuple.sourceTuples[tupleIndex1].record.getPrimaryKey());
 
             if (compare < 0) 
             {
