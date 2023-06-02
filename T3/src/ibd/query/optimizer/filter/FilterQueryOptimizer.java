@@ -12,5 +12,5 @@ import ibd.query.Operation;
  * @author Sergio
  */
 public interface FilterQueryOptimizer {
-    public Operation pushDownFilters(Operation query);
+    public Operation pushDownFilters(Operation query) throws Exception;
 }
