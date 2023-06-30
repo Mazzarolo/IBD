@@ -23,7 +23,7 @@ public class Main {
 
     //Exercise of lesson 21 - Controle de Concorrência - Protocolos baseados em lock
     public void test1(ConcurrencyManager manager) throws Exception {
-        Table table1 = Utils.createTable("c:\\teste\\ibd", "t1", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table table1 = Utils.createTable(".", "t1", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
         Transaction t1 = new Transaction();
         t1.addInstruction(new SingleReadInstruction(table1, getValue("A")));
         t1.addInstruction(new SingleUpdateInstruction(table1, getValue("B"), "bla"));
@@ -60,7 +60,7 @@ public class Main {
 
     //granting read lock because transacton already has write lock
     public void test2(ConcurrencyManager manager) throws Exception {
-        Table table1 = Utils.createTable("c:\\teste\\ibd", "t2", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table table1 = Utils.createTable(".", "t2", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
 
         Transaction t1 = new Transaction();
 
@@ -86,7 +86,7 @@ public class Main {
 
     //granting read lock because transacton already has write lock
     public void test3(ConcurrencyManager manager) throws Exception {
-        Table tab = Utils.createTable("c:\\teste\\ibd", "t1", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table tab = Utils.createTable(".", "t1", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
 
         Transaction t1 = new Transaction();
         t1.addInstruction(new SingleReadInstruction(tab, getValue("A")));
@@ -105,7 +105,7 @@ public class Main {
     
     //granting write lock on a transaction that already has a read lock
     public void test4(ConcurrencyManager manager) throws Exception {
-        Table table1 = Utils.createTable("c:\\teste\\ibd", "t2", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table table1 = Utils.createTable(".", "t2", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
 
         Transaction t1 = new Transaction();
 
@@ -131,7 +131,7 @@ public class Main {
 
     //classic deadlock
     public void test5(ConcurrencyManager manager) throws Exception {
-        Table table1 = Utils.createTable("c:\\teste\\ibd", "t3", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table table1 = Utils.createTable(".", "t3", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
         Transaction t1 = new Transaction();
         t1.addInstruction(new SingleReadInstruction(table1, getValue("A")));
         t1.addInstruction(new SingleUpdateInstruction(table1, getValue("B"), "bla"));
@@ -148,7 +148,7 @@ public class Main {
 
     //deadlock exercise of lesson 22 - Controle de Concorrência - Deadlock
     public void test6(ConcurrencyManager manager) throws Exception {
-        Table table1 = Utils.createTable("c:\\teste\\ibd", "t4", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table table1 = Utils.createTable(".", "t4", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
         Transaction t1 = new Transaction();
         t1.addInstruction(new SingleReadInstruction(table1, getValue("B")));
         t1.addInstruction(new SingleUpdateInstruction(table1, getValue("A"), "bla"));
@@ -174,7 +174,7 @@ public class Main {
 
     //deadlock test
     public void test7(ConcurrencyManager manager) throws Exception {
-        Table table1 = Utils.createTable("c:\\teste\\ibd", "t5", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table table1 = Utils.createTable(".", "t5", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
         Transaction t1 = new Transaction();
         t1.addInstruction(new SingleReadInstruction(table1, getValue("B")));
         t1.addInstruction(new SingleUpdateInstruction(table1, getValue("A"), "bla"));
@@ -204,7 +204,7 @@ public class Main {
 
     //deadlock test
     public void test8(ConcurrencyManager manager) throws Exception {
-        Table table1 = Utils.createTable("c:\\teste\\ibd", "t6", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table table1 = Utils.createTable(".", "t6", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
         Transaction t1 = new Transaction();
         t1.addInstruction(new SingleReadInstruction(table1, getValue("A")));
         t1.addInstruction(new SingleUpdateInstruction(table1, getValue("C"), "bla"));
@@ -240,7 +240,7 @@ public class Main {
 
     //deadlock test
     public void test9(ConcurrencyManager manager) throws Exception {
-        Table table1 = Utils.createTable("c:\\teste\\ibd", "t7", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
+        Table table1 = Utils.createTable(".", "t7", Table.DEFULT_PAGE_SIZE, 1000, false, 1);
 
         Transaction t1 = new Transaction();
         t1.addInstruction(new SingleReadInstruction(table1, getValue("A")));

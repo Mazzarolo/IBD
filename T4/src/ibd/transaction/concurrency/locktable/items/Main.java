@@ -17,6 +17,8 @@ import ibd.transaction.instruction.SingleWriteInstruction;
 import ibd.transaction.Transaction;
 import ibd.transaction.concurrency.LockBasedConcurrencyManager;
 
+import java.util.TreeMap;
+
 /**
  *
  * @author pccli
@@ -111,7 +113,7 @@ public class Main {
         Main m = new Main();
         try {
             //m.test1(new LockBasedConcurrencyManager(), "E","D");
-            m.test2(new LockBasedConcurrencyManager(), "A", "E", "D");
+            m.test1(new LockBasedConcurrencyManager(), "A", "E", "D");
             //m.test2(new LockBasedConcurrencyManager(), "A","C", "B","C","C");
 
         } catch (Exception ex) {
