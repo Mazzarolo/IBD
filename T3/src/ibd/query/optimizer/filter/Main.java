@@ -208,6 +208,23 @@ public class Main {
 
         Operation diff = new Difference(scan1, scan2);
 
+        Operation filter1 = new PKFilter(diff, null, ComparisonTypes.LOWER_THAN, 1000L);
+        Operation filter2 = new PKFilter(filter1, null, ComparisonTypes.GREATER_THAN, 500L);
+
+        return filter2;
+    }
+
+    private Operation createQuery8() throws Exception {
+
+        Table table1 = Directory.getTable(path,
+                "t1", Table.DEFULT_PAGE_SIZE, false);
+        Table table2 = Directory.getTable(path,
+                "t2", Table.DEFULT_PAGE_SIZE, false);
+        Operation scan1 = new TableScan("t1", table1);
+        Operation scan2 = new TableScan("t2", table2);
+
+        Operation diff = new Difference(scan1, scan2);
+
         Operation filter1 = new PKFilter(diff, null, ComparisonTypes.EQUAL, 20L);
         Operation filter2 = new PKFilter(filter1, null, ComparisonTypes.EQUAL, 50L);
 
